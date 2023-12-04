@@ -17,6 +17,18 @@ export const getMovie = async (movie_id) => {
   const response = await api.get(`movie/${movie_id}`, {
     params: { api_key }
   });
-  console.log(response);
   return response.data;
+}
+export const getReviews = async (movie_id) => {
+  const response = await api.get(`movie/${movie_id}/reviews`, {
+    params: { api_key }
+  });
+  return response.data;
+}
+
+export const getCast = async (movie_id) => {
+  const response = await api.get(`movie/${movie_id}/credits`, {
+    params: { api_key }
+  });
+  return response.data.cast;
 }

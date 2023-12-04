@@ -10,7 +10,7 @@ import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   return (
-    <Routes baseurl='/goit-react-hw-05-movies'>
+    <Routes baseurl='/'>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />} />
         <Route path="movies" element={<Movies />} />

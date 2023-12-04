@@ -40,9 +40,14 @@ export const GlobalStyle = createGlobalStyle`
   .container {
     max-width: 1440px;
     padding: 0 20px;
+    margin: auto;
   }
 
   a {
     text-decoration: none;
+  }
+
+  p {
+    max-width: unset;
   }
 `;
