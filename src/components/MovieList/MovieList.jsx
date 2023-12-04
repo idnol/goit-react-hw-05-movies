@@ -17,7 +17,6 @@ export const MovieList = () => {
     }
     getMovies();
   }, []);
-  console.log(trendList);
 
   return <MoviesListStyled>
     {trendList.map(item => {

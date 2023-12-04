@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovie } from '../../api';
 import { Cast } from '../Cast/Cast';
@@ -18,7 +18,6 @@ export const MovieInfo = () => {
     setShowReviews(false);
     e.target.classList.add('active')
     e.target.nextElementSibling.classList.remove('active')
-    console.log(e);
   }
 
   const handleReviewsClick = (e) => {
@@ -47,8 +46,10 @@ export const MovieInfo = () => {
         <ButtonBlock onClick={handleCastClick}>Cast</ButtonBlock>
         <ButtonBlock onClick={handleReviewsClick}>Reviews</ButtonBlock>
       </ButtonWrapper>
-      {showCast && <Cast id={params.movieId} />}
-      {showReviews && <Reviews id={params.movieId} />}
+      {/*{showCast && <Cast id={params.movieId} />}*/}
+      {/*{showReviews && <Reviews id={params.movieId} />}*/}
+      {showCast && <Link to="cast" />}
+      {showReviews && <Link to="reviews" />}
     </ContentWrapper>
   </div>
 }
