@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { GlobalStyle } from '../GlobalStyle';
 import { FooterStyled, HeaderStyled, MainStyled, MenuListStyled, TextStyled } from './AppLayout.styled';
+import { Suspense } from 'react';
 
 export const AppLayout = () => {
   const now = new Date();
@@ -22,7 +23,9 @@ export const AppLayout = () => {
       </HeaderStyled>
       <MainStyled>
         <div className='container'>
-          <Outlet />
+          <Suspense fallback={<></>}>
+            <Outlet />
+          </Suspense>
         </div>
       </MainStyled>
       <FooterStyled>

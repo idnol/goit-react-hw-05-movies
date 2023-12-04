@@ -1,5 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import { getMovie } from '../../api';
 import { Cast } from '../Cast/Cast';
 import { Reviews } from '../Reviews/Reviews';
@@ -12,6 +12,10 @@ export const MovieInfo = () => {
   const [movieInfo, setMovieInfo] = useState({});
   const [showCast, setShowCast] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
+
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? '/movies');
+
 
   const handleCastClick = (e) => {
     setShowCast(true);
@@ -48,8 +52,10 @@ export const MovieInfo = () => {
       </ButtonWrapper>
       {/*{showCast && <Cast id={params.movieId} />}*/}
       {/*{showReviews && <Reviews id={params.movieId} />}*/}
-      {showCast && <Link to="cast" />}
+      <Link to="cast" />
       {showReviews && <Link to="reviews" />}
+      <Outlet />
     </ContentWrapper>
+
   </div>
 }
