@@ -18,9 +18,9 @@ export const Cast = () => {
       }
     }
     getMovieCast();
-  }, [])
+  }, [params.movieId])
   return <CastList>
-    {cast.map((item, index) => {
+    {cast.map((item) => {
       return <CastItemWrapper key={item.id}>
         <CastItem name={item.name} character={item.character} img={item.profile_path} />
       </CastItemWrapper>

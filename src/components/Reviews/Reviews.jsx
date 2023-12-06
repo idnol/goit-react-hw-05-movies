@@ -17,7 +17,7 @@ export const Reviews = () => {
       }
     }
     getMovieReviews();
-  }, [])
+  }, [params.movieId])
   return <>
     {reviews.length !== 0 && <ul>
       {reviews.map(item => {

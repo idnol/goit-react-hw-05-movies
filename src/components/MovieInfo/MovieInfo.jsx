@@ -1,8 +1,6 @@
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { getMovie } from '../../api';
-import { Cast } from '../Cast/Cast';
-import { Reviews } from '../Reviews/Reviews';
 import { MovieInfoHead } from '../MovieInfoHead/MovieInfoHead';
 import { ButtonBlock, ButtonWrapper, ContentWrapper } from './MovieInfo.styled';
 import { BackButton } from '../BackButton/BackButton';
@@ -25,7 +23,7 @@ export const MovieInfo = () => {
       }
     }
     getDetails();
-  }, []);
+  }, [params.movieId]);
   return <div className="container">
     <BackButton loc={backLinkRef} />
     <MovieInfoHead poster={movieInfo.poster_path} title={movieInfo.title} avg={movieInfo.vote_average} text={movieInfo.overview} />
