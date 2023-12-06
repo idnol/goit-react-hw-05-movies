@@ -32,3 +32,10 @@ export const getCast = async (movie_id) => {
   });
   return response.data.cast;
 }
+
+export const searchMovies = async (query) => {
+  const response = await api.get(`search/movie?query=${query}`, {
+    params: { api_key }
+  });
+  return response.data.results;
+}

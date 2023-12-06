@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import {
   AvgStyled,
@@ -13,7 +13,9 @@ import { FaStarHalfAlt } from 'react-icons/fa';
 const PATH = 'https://image.tmdb.org/t/p/w500'
 
 export const MovieItem = ({id, title, img, avg}) => {
-  return <NavLink to={`/movies/${id}`}>
+  const location = useLocation();
+
+  return <Link to={`/movies/${id}`} state={{ from: location }}>
     <ImageWrapperStyled>
       <ImageStyled src={PATH + img} alt='{title}' />
     </ImageWrapperStyled>
@@ -25,5 +27,5 @@ export const MovieItem = ({id, title, img, avg}) => {
         </AvgWrapperStyled>
       </IconContext.Provider>
     </InfoWrapperStyled>
-  </NavLink>
+  </Link>
 }

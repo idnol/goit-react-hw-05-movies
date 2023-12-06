@@ -10,26 +10,10 @@ import { BackButton } from '../BackButton/BackButton';
 export const MovieInfo = () => {
   const params = useParams();
   const [movieInfo, setMovieInfo] = useState({});
-  const [showCast, setShowCast] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
 
   const location = useLocation();
+
   const backLinkRef = useRef(location.state?.from ?? '/movies');
-
-
-  const handleCastClick = (e) => {
-    setShowCast(true);
-    setShowReviews(false);
-    e.target.classList.add('active')
-    e.target.nextElementSibling.classList.remove('active')
-  }
-
-  const handleReviewsClick = (e) => {
-    setShowCast(false);
-    setShowReviews(true);
-    e.target.classList.add('active')
-    e.target.previousElementSibling.classList.remove('active')
-  }
 
   useEffect(() => {
     async function getDetails() {
@@ -43,19 +27,14 @@ export const MovieInfo = () => {
     getDetails();
   }, []);
   return <div className="container">
-    <BackButton />
+    <BackButton loc={backLinkRef} />
     <MovieInfoHead poster={movieInfo.poster_path} title={movieInfo.title} avg={movieInfo.vote_average} text={movieInfo.overview} />
     <ContentWrapper>
       <ButtonWrapper>
-        <ButtonBlock onClick={handleCastClick}>Cast</ButtonBlock>
-        <ButtonBlock onClick={handleReviewsClick}>Reviews</ButtonBlock>
+        <Link to="cast"><ButtonBlock>Cast</ButtonBlock></Link>
+        <Link to="reviews"><ButtonBlock>Reviews</ButtonBlock></Link>
       </ButtonWrapper>
-      {/*{showCast && <Cast id={params.movieId} />}*/}
-      {/*{showReviews && <Reviews id={params.movieId} />}*/}
-      <Link to="cast" />
-      {showReviews && <Link to="reviews" />}
-      <Outlet />
     </ContentWrapper>
-
+    <Outlet />
   </div>
 }
